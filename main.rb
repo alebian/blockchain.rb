@@ -1,5 +1,5 @@
-require_relative 'blockchain'
-require_relative 'miner'
+require_relative 'lib/blockchain'
+require_relative 'lib/miner'
 
 blockchain = Blockchain.instance
 

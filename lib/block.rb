@@ -1,4 +1,4 @@
-require 'openssl'
+require_relative 'Crypto'
 
 class Block
   attr_reader :index, :timestamp, :data, :previous_hash
@@ -12,8 +12,7 @@ class Block
 
   def hash
     return @hash if @hash
-    hasher = OpenSSL::Digest::SHA256.new
-    @hash ||= hasher.hexdigest(index.to_s + timestamp.to_s + data.to_s + previous_hash.to_s)
+    @hash ||= Crypto.hash(index.to_s + timestamp.to_s + data.to_s + previous_hash.to_s)
   end
 
   def valid?
